@@ -1,0 +1,370 @@
+---
+title: "Differential Expression Analysis miRNA: Workflow 02"
+author: "Beatriz Moreno Pérez"
+output: word_document
+---
+
+# Package load
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, dpi=300)
+
+library (sessioninfo)
+library (Biobase)
+library (BiocManager)
+library(GEOquery) # getGEO
+library (stringr)
+library (oligo)
+library (genefilter)
+library (simpleaffy)
+library (ggplot2)
+library (ggrepel)
+library (dplyr)
+library (matrixStats)
+library (samr)
+library (impute)
+```
+
+
+According to the paper, the workflow followed by the authors comprised the following steps.
+
+1. The labeled samples (400 ng) were hybridized overnight Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix,Santa Clara, CA) which include 847 human miRNAs from Sanger miRBase v11.
+
+2. Signal intensities and present calls were generated in the miRNA QC tool (Affymetrix) using default settings, i.e., BC-CG background adjustment, quantile normalization, and median polish summarization. This results can also be downloaded from GEO. Subsequent microarray analysis was limited to the 205 human miRNAs that were scored as present according to the miRNA QC tool in 40 samples. 
+
+3. Microarray results were analyzed by the Bioconductor package significance analysis of microarrays using two-group unpaired comparison (samr package). Associated publication: Tusher VG, Tibshirani R, Chu G. Significance analysis of microarrays applied to the ionizing radiation response. Proc Natl Acad Sci USA 98: 5116–5121, 2001. doi:10.1073/pnas.091062498.
+
+This workflow will be replicated in this analysis.
+
+
+# 1. Expression Data
+
+The expression set downloaded from GEO contains the normalized intensity values from the 
+
+```{r, echo=TRUE, results='hide'}
+# Descarga de los datos de GEO:
+gds <- getGEO("GSE87379", GSEMatrix = TRUE, getGPL=TRUE, AnnotGPL=FALSE)
+expresSet <- gds$GSE87379_series_matrix.txt.gz
+```
+
+# 2. Sample Data
+
+```{r, warning=FALSE}
+# Pheno data extraction:
+info <- pData (expresSet)
+```
+
+```{r}
+# Pheno data transformation to create a "targets" file:
+
+# Subject ID:
+ID <- matrix(unlist(strsplit(info$title, split = " ID", fixed=TRUE)), 
+             ncol = 2, byrow = TRUE)[,2]
+
+# Group (lean, obese insulin sensitive, obese insulin resistant):
+Group <- matrix(unlist(strsplit(info$title, split = " ID", fixed=TRUE)), 
+                ncol = 2, byrow = TRUE)[,1]
+
+# Reference to .CEL file:
+File <- matrix(unlist(strsplit(info$supplementary_file, split = "/", fixed=TRUE)), 
+                ncol = 9, byrow = TRUE)[,9]
+File <- sapply (File, str_remove, ".gz", USE.NAMES = FALSE)
+
+# Table including only this relevant information:
+pheno <- data.frame (File, GEO=info$geo_accession, Group, ID,
+                     row.names = TRUE)
+pheno$Group <- as.factor (pheno$Group)
+```
+
+
+# 3. Quality analysis of normalized data
+
+## Density Plot/Histogram
+
+Plots the distribution of log base 2 intensities. Compares behavior between arrays.
+
+```{r, fig.align="c", fig.height=5, fig.width=8}
+hist(expresSet, main="Density Plot", lty=1:6)
+```
+
+## Boxplot
+
+Also compares the overall distribution of log transformed intensities between the samples.
+
+```{r, fig.align="c", fig.height=5, fig.width=10, fig.cap="Gráfico de cajas"}
+boxplot (expresSet, cex.axis = 0.7, las = 3,  
+         names = pheno$GEO, main = "Boxplot", col = pheno$Group)
+```
+
+## PCA plot
+
+```{r, include = FALSE}
+# Function obtained from Sanchez Pla A., 2020, Omics_Data_Analysis-Case_Study_1-Microarrays 
+# github repository.
+
+plotPCA3 <- function (datos, labels, factor, title, scale, colores, size = 1.5, 
+                      glineas = 0.25) {
+   data <- prcomp(t(datos),scale=scale)
+   # ajustes
+   dataDf <- data.frame(data$x)
+   Group <- factor
+   loads <- round(data$sdev^2/sum(data$sdev^2)*100,1)
+   # plot
+   p1 <- ggplot(dataDf,aes(x=PC1, y=PC2)) +
+     theme_classic() +
+     geom_hline(yintercept = 0, color = "gray70") +
+     geom_vline(xintercept = 0, color = "gray70") +
+     geom_point(aes(color = Group), alpha = 0.55, size = 3) +
+     coord_cartesian(xlim = c(min(data$x[,1])-5,max(data$x[,1])+5)) +
+     scale_fill_discrete(name = "Group")
+  
+   # "labels"
+   p1 + geom_text_repel(aes(y = PC2 + 0.25, label = labels),segment.size = 0.25, 
+                        size = size) + 
+     labs(x = c(paste("PC1",loads[1],"%")),y=c(paste("PC2",loads[2],"%"))) +  
+     ggtitle(paste("Principal Component Analysis for: ",title,sep=" "))+ 
+     theme(plot.title = element_text(hjust = 0.5)) +
+     scale_color_manual(values=colores)
+   }
+```
+
+```{r, fig.height=5, fig.width=8}
+plotPCA3(exprs(expresSet), labels = pheno$GEO, factor = pheno$Group, 
+          title="Raw data", scale = FALSE, size = 3, 
+          colores = c("deeppink1", "#95D840FF", "#287D8EFF"))
+```
+
+## Cluster dendrogram
+
+```{r, fig.align="c", fig.height=6, fig.width = 10}
+distanc <- dist(t(exprs(expresSet)), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pheno$Group)
+```
+
+```{r, fig.align="c", fig.height=6, fig.width = 10}
+distanc <- dist(t(exprs(expresSet)), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pheno$GEO)
+```
+
+## 4. Genes considered "present"
+
+Genes that were present according to Affymetrix miRNAQC tool will be filtered for further analysis. A table with the signal intensity (log(2) transformed) and the detection score according to miRNA QC tool has been uploaded to GEO for each of the 48 samples in the study. According to the paper, only miRNAs tagged as "present" in more than 40 samples were considered for further analysis.
+
+```{r}
+# Example of a miRNA QC tool output table:
+# The first row correspods to the miRNA identification name, the second to the 
+# logged intensity, V3 stands for the p-value and the last column shows the 
+# detection state.
+GSM2329944 <- read.table ("./GSE87379_family.xml/GSM2329944-tbl-1.txt", header = FALSE,
+                          sep = "\t")
+head (GSM2329944)
+
+
+# EXTRACTION OF THE PRESENT/NOT PRESENT STATE FOR EACH miRNA IN EACH SAMPLE:
+# Tables like the one shown above are read for each sample.
+# Column V4 contains the detection state for each miRNA 
+# (TRUE = detected/FALSE = not detected).
+# Column V4 for each sample will be appended into a single dataframe. 
+# Rows in this dataframe correspond to miRNAs, columns to the detection in each sample.
+miRNA <- GSM2329944$V1
+
+for (i in 44:91){
+  file <- paste0("./GSE87379_family.xml/", "GSM23299",i, "-tbl-1.txt")
+  r <-read.table (file, header = FALSE, sep = "\t")
+  miRNA <- cbind(miRNA, r$V4)
+}
+
+# miRNAs (rows) with more than 40 TRUE (present) values will be selected for 
+# futher analysis as described by the original investigators.
+present <- miRNA [(rowCounts((as.matrix(miRNA)))>40),1]
+
+# Selection of human miRNA among the present:
+human_present <- present [grep ("hsa", present)]
+length (human_present)
+```
+
+205 miRNAs were tagged as present by the Affymetrix analysis in more than 40 samples. These miRNA will be considered for further analysis.
+
+These selected miRNA are, therefore, filtered in the Expression Set to continue with the analysis:
+
+```{r}
+# Names of miRNA probes that are not human:
+names <- featureNames(expresSet)
+names <- setdiff.Vector(names, human_present)
+
+# Filtering:
+expresSetF <- featureFilter(expresSet, 
+                       require.entrez=FALSE, remove.dupEntrez=FALSE, 
+                       feature.exclude= names)
+
+# Number of miRNA probes left (human):
+length(featureNames(expresSetF))
+```
+
+```{r}
+pData(expresSetF) <- pheno
+```
+
+
+
+
+
+# Differential Expression analysis with samr
+
+**OIR-OIS**
+
+Remove lean group to perform pairwise OIR-OIS analysis:
+
+```{r}
+expresSet1 <- get.array.subset.affybatch(expresSetF, group = "Group", 
+                                       members=c("obese insulin resistant lipogenesis",
+                                                 "obese insulin sensitive lipogenesis"))
+```
+
+```{r, echo=FALSE, message=FALSE}
+f1 <- factor(pData(expresSet1)$Group,
+             levels = c("obese insulin sensitive lipogenesis", "obese insulin resistant lipogenesis")) 
+# Factor =  groups compared
+
+# List object to feed the samr function:
+data1 <- list (x=exprs(expresSet1), y=f1, geneid= rownames(exprs(expresSet1)),
+              genenames=rownames(exprs(expresSet1)), logged2=TRUE)
+
+# SAM Analysis
+samr.obj1 <- samr(data1, resp.type = "Two class unpaired", assay.type="array", nperms = 100,
+                  testStatistic= "standard", center.arrays = FALSE, random.seed=1234567)
+```
+
+A delta value should be chosen that gives an adequate compromise in terms of called genes, false genes and False Discovery Rate (FDR). According to the paper, a false discovery rate of 0.05% was used as threshold.
+
+```{r}
+delta.table1 <- samr.compute.delta.table(samr.obj1, min.foldchange = 0.8, nvals = 50)
+
+# Selection of a delta value with median FDR <5%:
+d <- delta.table1[delta.table1[, "median FDR"] < 0.05, ]
+head (d)
+```
+
+```{r}
+samr.plot(samr.obj1, d[1])
+```
+
+```{r}
+siggenes.table1bis <- samr.compute.siggenes.table(samr.obj1, d[1], data1, delta.table1, min.foldchange = 1)
+
+siggenes.table1bis$genes.up
+siggenes.table1bis$genes.lo
+```
+
+
+
+OIR-lean
+
+Remove one group:
+```{r}
+expresSet2 <- get.array.subset.affybatch(expresSetF, group = "Group", 
+                                       members=c("obese insulin resistant lipogenesis",
+                                                 "lean control"))
+```
+
+```{r}
+
+# To perform ANOVA the model matrix must be first created.
+f2 <- factor(pData(expresSet2)$Group, 
+             levels = c("lean control", "obese insulin resistant lipogenesis")) # Factor =  groups compared
+data2 <- list (x=exprs(expresSet2), y=f2, geneid= rownames(exprs(expresSet2)),
+              genenames=rownames(exprs(expresSet2)), logged2=TRUE)
+
+# Analysis
+samr.obj2 <- samr(data2, resp.type = "Two class unpaired", assay.type="array", nperms = 100,
+                  testStatistic= "standard", center.arrays = FALSE, random.seed=1234567)
+```
+
+```{r}
+delta.table2 <- samr.compute.delta.table(samr.obj2, min.foldchange = 0.8)
+
+# Let’s select delta with median FDR <10% - subset the whole delta table and take the first row.
+d <- delta.table2[delta.table2[, "median FDR"] < 0.05, ][1, ]
+d[1]
+```
+```{r}
+samr.plot(samr.obj2, d[1])
+```
+
+```{r}
+siggenes.table2bis <- samr.compute.siggenes.table(samr.obj2, d[1], data2, delta.table2, min.foldchange = 1)
+
+View (siggenes.table2bis$genes.up)
+View (siggenes.table2bis$genes.lo)
+```
+
+
+**OIS-lean**
+
+Remove one group: 
+```{r}
+expresSet3 <- get.array.subset.affybatch(expresSetF, group = "Group", 
+                                       members=c("obese insulin sensitive lipogenesis",
+                                                 "lean control"))
+```
+
+```{r}
+# To perform ANOVA the model matrix must be first created.
+f3 <- factor(pData(expresSet3)$Group,
+             levels = c("lean control", "obese insulin sensitive lipogenesis")) # Factor =  groups compared
+data3 <- list (x=exprs(expresSet3), y=f3, geneid= rownames(exprs(expresSet3)),
+              genenames=rownames(exprs(expresSet3)), logged2=TRUE)
+
+# Analysis
+samr.obj3 <- samr(data3, resp.type = "Two class unpaired", assay.type="array", nperms = 100,
+                  testStatistic= "standard", center.arrays = FALSE, random.seed=1234567)
+```
+
+```{r}
+delta.table3 <- samr.compute.delta.table(samr.obj3, min.foldchange = 1)
+
+# Let’s select delta with median FDR <10% - subset the whole delta table and take the first row.
+d <- delta.table3[delta.table3[, "median FDR"] < 0.05, ][1, ]
+d[1]
+```
+```{r}
+samr.plot(samr.obj3, d[1])
+```
+
+```{r}
+siggenes.table3bis <- samr.compute.siggenes.table(samr.obj3, d[1], data3, delta.table3, min.foldchange = 1)
+
+View (siggenes.table3bis$genes.up)
+View (siggenes.table3bis$genes.lo)
+```
+
+
+
+
+# Session information
+
+```{r}
+sessionInfo()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
