@@ -1,0 +1,513 @@
+---
+title: "Differential Expression Analysis miRNA: workflow 01"
+author: "Beatriz Moreno Pérez"
+output: word_document
+---
+
+# Package load
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, dpi=300)
+
+library (sessioninfo)
+library (Biobase)
+library (BiocManager)
+library(GEOquery) # getGEO
+library (stringr)
+library (oligo) # list cellfiles
+library(arrayQualityMetrics)
+library (simpleaffy)
+library (pd.mirna.1.0)
+library (ggplot2)
+library (ggrepel)
+library (limma)
+library (mirbase.db)
+library (dplyr)
+library (VennDiagram)
+```
+
+# Data: Affymetrix Multispecies miRNA-1 Array
+
+Experiment data has been downloaded from GEO (accession number: GSE87379). 
+
+```{r, echo=TRUE, results='hide'}
+# Data download from GEO:
+gds <- getGEO("GSE87379", GSEMatrix = TRUE, getGPL=FALSE)
+expresSet <- gds$GSE87379_series_matrix.txt.gz
+```
+
+
+## Sample annotation:
+
+Information for the 48 samples included in the study is provided ("phenoData"):
+
+```{r, warning=FALSE}
+# Pheno data extraction:
+info <- pData (expresSet)
+```
+
+The initial table format is no easy to read and to use in further analysis. It will be modified to include only information on labels and ID for the samples, the study group (lean, OIS, OIR), and the .CEL file.
+
+```{r}
+# Pheno data transformation to create a "targets" file:
+
+# Subject ID:
+ID <- matrix(unlist(strsplit(info$title, split = " ID", fixed=TRUE)), 
+             ncol = 2, byrow = TRUE)[,2]
+
+# Group (lean, obese insulin sensitive, obese insulin resistant):
+Group <- matrix(unlist(strsplit(info$title, split = " ID", fixed=TRUE)), 
+                ncol = 2, byrow = TRUE)[,1]
+
+# Reference to .CEL file:
+File <- matrix(unlist(strsplit(info$supplementary_file, split = "/", fixed=TRUE)), 
+                ncol = 9, byrow = TRUE)[,9]
+File <- sapply (File, str_remove, ".gz", USE.NAMES = FALSE)
+
+# Table including only this relevant information:
+pheno <- data.frame (File, GEO=info$geo_accession, Group, ID,
+                     row.names = TRUE)
+pheno$Group <- as.factor (pheno$Group)
+
+# Table visualization:
+knitr:: kable (head (pheno))
+```
+
+
+## Read .CEL files:
+
+CEL files contain raw intensities for each probe on the array.
+
+```{r, echo=TRUE, results='hide'}
+# RAW DATA FROM CEL FILES:
+# Information on readings is extracted from downloaded .CEL files.
+# This information is stored together with the phenotype data table
+# in an Expression Feature Set (oligo):
+celList <- list.celfiles ("./GSE87379_RAW", full.names=TRUE)
+rawData <- read.celfiles(celList, pkgname = "pd.mirna.1.0", verbose=FALSE)
+pData(rawData) <- pheno
+```
+
+Now raw intensities and associated sample data are stored in a ExpressionFeatureSet object called rawData that will be used in further analysis.
+
+
+# Quality Control of Raw Data
+
+Before normalization, the probe intensities must be checked to find out the apparent outliers caused by non-system errors.
+
+
+## Density Plot/Histogram
+
+Plots the distribution of log base 2 intensities. Compares behavior between arrays.
+
+```{r, fig.align="c", fig.height=5, fig.width=8, fig.cap="Gráfico de densidad"}
+# Gráfico de densidad:
+hist(rawData, main="Density Plot", lty=1:6)
+```
+
+
+## Boxplot
+
+Also compares the overall distribution of log transformed intensities between the samples.
+
+```{r, fig.align="c", fig.height=5, fig.width=10, fig.cap="Gráfico de cajas"}
+boxplot (rawData, cex.axis = 0.7, las = 3,  
+         names = pheno$GEO, main = "Boxplot", col = pheno$Group)
+```
+
+Small variance among samples is shown.
+
+
+## MA Plots
+
+This technique compares each Affymetrix array to a pseudo-array. The pseudo array consists of the median intensity of each probe over all arrays. Ideally, the cloud of data points in the MA-plot should be centered around M=0 (blue line). Most divergent samples were: GSM2329951, GSM2329957, GSM2329963, GSM2329966, GSM2329977, GSM2329975, GSM2329981, GSM2329987.
+
+```{r}
+# 48 MA plots are generated with the following code:
+#oligo::MAplot(rawData,which=c(1:48))
+```
+
+
+## PCA plot
+
+The following plot shows the two first components of the principal component analysis. Samples dont seem to cluster over the phenotipical groups. Furthermore, one batch from the lean group (GSM2329946) seems to be accounting for a great part of the variation in the second principal component. It could be considered as an outlier if it shows alterations in other tests. 
+
+```{r, include = FALSE}
+# Function obtained from Sanchez Pla A., 2020, Omics_Data_Analysis-Case_Study_1-Microarrays 
+# github repository.
+plotPCA3 <- function (datos, labels, factor, title, scale, colores, size = 1.5, 
+                      glineas = 0.25) {
+   data <- prcomp(t(datos),scale=scale)
+   # ajustes
+   dataDf <- data.frame(data$x)
+   Group <- factor
+   loads <- round(data$sdev^2/sum(data$sdev^2)*100,1)
+   # plot
+   p1 <- ggplot(dataDf,aes(x=PC1, y=PC2)) +
+     theme_classic() +
+     geom_hline(yintercept = 0, color = "gray70") +
+     geom_vline(xintercept = 0, color = "gray70") +
+     geom_point(aes(color = Group), alpha = 0.55, size = 3) +
+     coord_cartesian(xlim = c(min(data$x[,1])-5,max(data$x[,1])+5)) +
+     scale_fill_discrete(name = "Group")
+  
+   # "labels"
+   p1 + geom_text_repel(aes(y = PC2 + 0.25, label = labels),segment.size = 0.25, 
+                        size = size) + 
+     labs(x = c(paste("PC1",loads[1],"%")),y=c(paste("PC2",loads[2],"%"))) +  
+     ggtitle(paste("Principal Component Analysis for: ",title,sep=" "))+ 
+     theme(plot.title = element_text(hjust = 0.5)) +
+     scale_color_manual(values=colores)
+   }
+```
+
+
+```{r, fig.height=5, fig.width=8}
+plotPCA3(exprs(rawData), labels = pheno$GEO, factor = pheno$Group, 
+          title="Raw data", scale = FALSE, size = 3, 
+          colores = c("deeppink1", "#95D840FF", "#287D8EFF"))
+```
+
+- **Agrupación jerárquica de las muestras (Figure 6):**
+
+```{r, fig.align="c", fig.height=6, fig.width = 10, fig.cap="Gráfico 04: Dendrograma"}
+distanc <- dist(t(exprs(rawData)), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pheno$GEO)
+```
+
+```{r, fig.align="c", fig.height=6, fig.width = 10, fig.cap="Gráfico 04: Dendrograma"}
+distanc <- dist(t(exprs(rawData)), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pheno$Group)
+```
+
+The sample GSM2329946 is further away from the other samples in this cluster dendrogram. As it also stood out as outlier in the PCA analysis, it´s deletion should be considered.
+
+
+# Outlier elimination:
+
+Sample GSM2329946 has been detected as a possible outlier and will be removed for further analysis.
+
+```{r}
+rawData2 <- get.array.subset.affybatch(rawData, group = "GEO", 
+                                       members=pheno$GEO[-3])
+```
+
+# PCA and Cluster analysis after removal of GSM2329946 sample.
+
+```{r, fig.height=5, fig.width=8}
+#PCA
+plotPCA3(exprs(rawData2), labels = pheno$GEO[-3], factor = pheno$Group[-3], 
+         title="Raw data (-GSM2329946)", scale = FALSE, size = 3, 
+         colores = c("deeppink1", "#95D840FF", "#287D8EFF"))
+
+#Clustering
+distanc <- dist(t(exprs(rawData2)), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pheno$GEO[-3])
+```
+
+
+
+
+# Normalization:
+
+The normalization process transforms data to remove systematic differences between the samples that are due to noise rather than true biological variability. There are several methods available, in this workflow the RMA algorithm from *oligo* package will be used. It can be applied to the raw data and will perform three steps:
+
+1) Background correction to correct for spatial variation within individual arrays.
+
+2) Quantile normalization to correct for variation between the arrays.
+
+3) Sumarization via median polish.
+
+
+```{r}
+normData <- oligo::rma(rawData2)
+```
+
+## Quality Control with normalized data:
+
+```{r, fig.height=5, fig.width=10}
+boxplot (normData, cex.axis = 0.7, las = 3,  
+         names = pheno$GEO[-3], main = "Boxplot", col = pheno$Group[-3])
+```
+
+```{r, fig.height=5, fig.width=8}
+plotPCA3(exprs(normData), labels = pheno$GEO[-3], factor = pheno$Group[-3], 
+          title="Raw data", scale = FALSE, size = 3, 
+          colores = c("deeppink1", "#95D840FF", "#287D8EFF"))
+```
+
+```{r}
+distanc <- dist(t(exprs(normData)), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pheno$GEO[-3])
+```
+
+
+Normalization has been correctly performed.
+
+Apparently, samples still don't cluster according to the experimental group when for the comparison between OIR and OIS. Comparisons between OIR-lean and OIS-lean are taken into account separately:
+
+**PCA Plot and Cluster Dendrogram for OIR - Lean:**
+
+```{r, fig.height=5, fig.width=8}
+# Subset:
+x <- pheno$Group[-3] == "lean control" | pheno$Group[-3] == "obese insulin resistant lipogenesis"
+
+plotPCA3(exprs(normData)[,x], labels = pData (normData)$GEO[x], factor = pData (normData)$Group[x], 
+          title="Raw data", scale = FALSE, size = 3, 
+          colores = c("deeppink1", "#95D840FF"))
+```
+
+```{r, fig.height=5, fig.width=8}
+distanc <- dist(t(exprs(normData)[,x]), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pData (normData)$Group[x])
+```
+
+**PCA Plot and Cluster Dendrogram for OIS - Lean:**
+
+```{r, fig.height=5, fig.width=8}
+# Subset:
+y <- pheno$Group[-3] == "lean control" | pheno$Group[-3] == "obese insulin sensitive lipogenesis"
+
+plotPCA3(exprs(normData)[,y], labels = pData (normData)$GEO[y], factor = pData (normData)$Group[y], 
+          title="Raw data", scale = FALSE, size = 3, 
+          colores = c("deeppink1", "#287D8EFF"))
+```
+
+```{r, fig.height=5, fig.width=8}
+distanc <- dist(t(exprs(normData)[,y]), method="euclidean")
+hc <- hclust(distanc, method="average")
+plot (hc, hang = -1, labels= pData (normData)$Group[y])
+```
+
+In the PCA plots, lean samples tend to cluster in the bottom-right while samples from obese insulin resistant subjects stay on the top-left. This differences are not as obvious for the OIS - lean comparison PCA analysis. With relation to the cluster dendrograms, the cluster pattern described does not appear. 
+
+
+# Filtering
+
+The Affymetrix GeneChip miRNA 1.0 includes probesets for many organisms. To proceed only with the human miRNAs, filtering is performed.
+
+```{r}
+# Names of miRNA probes that are not human:
+names <- unique(substring(featureNames(normData), 1, 3))
+names <- paste0("^", names)
+names <- names[names != "^hsa"]
+
+# Filtering:
+normDataF <- featureFilter(normData,
+                       require.entrez=FALSE, remove.dupEntrez=FALSE,   
+                       feature.exclude= names)
+
+# Number of miRNA probes left (human):
+length(featureNames(normDataF))
+```
+
+847 human miRNA probes were included in the GeneChip and considered for further analysis.
+
+
+
+
+# Differential Expression analysis
+
+
+## Design matrix and linear model (ANOVA)
+
+This test will determine if there is a difference between any of the compared groups.
+
+```{r}
+# To perform ANOVA the model matrix must be first created.
+f <- pData(normDataF)$Group # Factor =  groups compared
+design <- model.matrix(~ 0 + f) 
+colnames(design) <- c("lean","OIR","OIS")
+
+# ANOVA
+dataFit <- lmFit(normDataF,design)
+```
+
+## Pair-wise comparisons between the three groups
+
+A contrast matrix is created to define the pairwise comparisons of interest that follow the ANOVA test:
+
+- OIS - OIR
+
+- Lean - OIS
+
+- Lean - OIR
+
+```{r}
+# Contrast matrix creation:
+contrast.matrix <- makeContrasts(OIR-lean, OIS-lean, OIS-OIR,levels=design)
+dataFit_contrasts <- contrasts.fit(dataFit,contrast.matrix)
+dataFit_bayes = eBayes(dataFit_contrasts)
+
+# Log-Fold changes example:
+head (dataFit_bayes$coefficients)
+```
+
+
+
+## Volcano plot
+
+Volcano plots arrange genes along biological and statistical significance. 
+
+OIS - OIR:
+
+```{r}
+volcanoplot(dataFit_bayes,coef=3,
+            style = "p-value", highlight=20,
+            names=rownames(dataFit_bayes$coefficients),
+            col="darkblue")
+```
+
+OIS - lean:
+
+```{r}
+volcanoplot(dataFit_bayes,coef=2,
+            style = "p-value", highlight=20,
+            names=rownames(dataFit_bayes$coefficients),
+            col="darkblue")
+```
+
+OIR - lean:
+
+```{r}
+volcanoplot(dataFit_bayes,coef=1,
+            style = "p-value", highlight=20,
+            names=rownames(dataFit_bayes$coefficients),
+            col="darkblue")
+```
+
+
+# Adjusting for multiple testing and defining DE genes
+
+To control the false positive rate derived from the great amount of simultaneous comparisons performed, p-values must be adjusted. Benjamini and Hochberg method will be applied through the *toptable* function.
+
+The output is a table with the log-Fold Changes, the p-values and the adjusted p-values.
+
+```{r}
+topT_lean_OIS <- topTable (dataFit_bayes, number=nrow(dataFit_bayes), 
+                           coef = "OIS - lean", adjust.method = "BH")
+
+hist (topT_lean_OIS)
+```
+
+```{r}
+topT_lean_OIR <- topTable (dataFit_bayes, number=nrow(dataFit_bayes), 
+                           coef = "OIR - lean", adjust.method = "BH")
+hist (topT_lean_OIR)
+```
+
+```{r}
+topT_OIR_OIS <- topTable (dataFit_bayes, number=nrow(dataFit_bayes), 
+                           coef = "OIS - OIR", adjust.method = "BH")
+hist (topT_OIR_OIS)
+```
+
+
+
+
+
+## miRNA selection
+
+miRNAs with a minimum fold change of 0.7 and a maximum adjusted p-value of 0.05 for each group:
+
+**OIR-OIS:**
+
+```{r}
+# Selection of significant miRNA (p<0.05)
+OIR_OIS <- topT_OIR_OIS %>% filter (adj.P.Val < 0.05) %>% arrange(logFC)
+
+# Selection of higher fold-changes
+OIR_OIS_up <- OIR_OIS %>% filter (logFC > 0.7)
+OIR_OIS_down <- OIR_OIS %>% filter (logFC < -0.7)
+```
+
+```{r}
+OIR_OIS_df <-data.frame (miRNA = c(rownames(OIR_OIS_up),rownames(OIR_OIS_down)),
+            Reg = c(rep("up", nrow(OIR_OIS_up)), c(rep("down", nrow(OIR_OIS_down)))),
+            Comparative = rep("OIR-OIS", nrow(OIR_OIS_up)+nrow(OIR_OIS_down)))
+
+OIR_OIS_df
+```
+0 miRNA identified
+
+
+**LEAN-OIS:**
+
+```{r}
+# Selection of significant miRNA (p<0.05)
+lean_OIS <- topT_lean_OIS %>% filter (adj.P.Val < 0.05) %>% arrange(logFC)
+
+# Selection of higher fold-changes
+lean_OIS_up <- lean_OIS %>% filter (logFC > 0.7)
+lean_OIS_down <- lean_OIS %>% filter (logFC < -0.7)
+```
+
+```{r}
+L_OIS_df <- data.frame (miRNA = c(rownames(lean_OIS_up),rownames(lean_OIS_down)),
+            Reg = c(rep("up", nrow(lean_OIS_up)), rep("down", nrow(lean_OIS_down))),
+            Comparative = rep("LEAN-OIS", nrow(lean_OIS_up)+nrow(lean_OIS_down)))
+L_OIS_df
+```
+
+**LEAN-OIR:**
+
+```{r}
+# Selection of significant miRNA (p<0.05)
+lean_OIR <- topT_lean_OIR %>% filter (adj.P.Val < 0.05) %>% arrange(logFC)
+
+# Selection of higher fold-changes
+lean_OIR_up <- lean_OIR %>% filter (logFC > 0.7)
+lean_OIR_down <- lean_OIR %>% filter (logFC < -0.7)
+```
+
+```{r}
+L_OIR_df <-data.frame (miRNA = c(rownames(lean_OIR_up),rownames(lean_OIR_down)),
+            Reg = c(rep("up", nrow(lean_OIR_up)), rep("down", nrow(lean_OIR_down))),
+            Comparative = rep("LEAN-OIR", nrow(lean_OIR_up)+nrow(lean_OIR_down)))
+L_OIR_df
+```
+
+
+## Venn Diagram
+
+```{r}
+DEresults <- decideTests(dataFit_bayes, method="separate", adjust.method="BH", p.value=0.05, lfc=0.7)
+
+vennDiagram(DEresults, include=c("up", "down"), counts.col=c("purple", "darkblue"),
+            circle.col = c("darkblue"))
+```
+
+
+
+
+
+# Session information
+
+```{r}
+sessionInfo()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
