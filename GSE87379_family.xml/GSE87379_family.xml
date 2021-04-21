@@ -1,0 +1,3463 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<MINiML
+   xmlns="http://www.ncbi.nlm.nih.gov/geo/info/MINiML"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.ncbi.nlm.nih.gov/geo/info/MINiML http://www.ncbi.nlm.nih.gov/geo/info/MINiML.xsd"
+   version="0.5.0" >
+
+  <Contributor iid="contrib1">
+    <Person><First>Ingrid</First><Last>Dahlman</Last></Person>
+    <Email>ingrid.dahlman@ki.se</Email>
+    <Organization>Karolinska</Organization>
+    <Address>
+      <Line>Karolinska Huddinge</Line>
+      <City>Stockholm</City>
+      <Zip-Code>14186</Zip-Code>
+      <Country>Sweden</Country>
+    </Address>
+  </Contributor>
+
+  <Contributor iid="contrib2">
+    <Organization></Organization>
+    <Email>geo@ncbi.nlm.nih.gov, support@affymetrix.com</Email>
+    <Phone>888-362-2447</Phone>
+    <Organization>Affymetrix, Inc.</Organization>
+    <Address>
+      <City>Santa Clara</City>
+      <State>CA</State>
+      <Zip-Code>95051</Zip-Code>
+      <Country>USA</Country>
+    </Address>
+    <Web-Link>http://www.affymetrix.com/index.affx</Web-Link>
+  </Contributor>
+
+  <Database iid="GEO">
+    <Name>Gene Expression Omnibus (GEO)</Name>
+    <Public-ID>GEO</Public-ID>
+    <Organization>NCBI NLM NIH</Organization>
+    <Web-Link>http://www.ncbi.nlm.nih.gov/geo</Web-Link>
+    <Email>geo@ncbi.nlm.nih.gov</Email>
+  </Database>
+
+  <Platform iid="GPL8786">
+    <Status database="GEO">
+      <Submission-Date>2009-07-01</Submission-Date>
+      <Release-Date>2009-07-01</Release-Date>
+      <Last-Update-Date>2017-05-02</Last-Update-Date>
+    </Status>
+    <Title>[miRNA-1] Affymetrix Multispecies miRNA-1 Array</Title>
+    <Accession database="GEO">GPL8786</Accession>
+    <Technology>in situ oligonucleotide</Technology>
+    <Distribution>commercial</Distribution>
+    <Organism taxid="32630">synthetic construct</Organism>
+    <Manufacturer>Affymetrix</Manufacturer>
+    <Manufacture-Protocol>
+see manufacturer's web site
+    </Manufacture-Protocol>
+    <Description>
+Affymetrix submissions are typically submitted to GEO using the GEOarchive method described at http://www.ncbi.nlm.nih.gov/projects/geo/info/geo_affy.html
+
+#%create_date=Tue Oct 21 17:29:14 PDT 2008
+#%guid=0000050091-1224635354-0064538561-0684514888-1962062125
+#%chip_type=miRNA-1_0
+# File contains all miRNAs from miRBase that have mapping information grouped by organism, all miRNAs without mapping information grouped by organism (designated as Sequence Type: miRNA), all sno/sca from UCSC (snoRNABase) and Ensembl (designated as Sequence Type: CDBox, HAcaBox, snoRNA and scaRna, and controls).
+# miRNAs:
+# * An annot name generally represents one genome location, but may refer to multiple annotations because of multiple mature products delineated by &quot;-3p&quot; and &quot;-5p&quot;, or &quot;.1&quot; and &quot;.2&quot;.
+# * Also, those with a '-star' are minor products, and those without '-star' or any other aforementioned suffix are considered the major product.
+# * Probeset IDs may appear more than once because the miRNA was mapped to multiple locations in the genome, and the annot names may have a &quot;-1&quot;, &quot;-2&quot;, etc type of suffix.
+# * Probeset IDs with a letter suffix (eg, fru-miR-23a and fru-miR-23b) are related miRNAs where the sequence is highly similar.
+# sno/sca:
+# * The sequences for the sno/sca probesets are the entire sequences sent to Chip Design, not just the SIF regions.
+
+    </Description>
+    <Web-Link>http://www.affymetrix.com/products_services/arrays/specific/mi_rna.affx#1_1</Web-Link>
+    <Web-Link>http://www.affymetrix.com/analysis/index.affx</Web-Link>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID</Name>
+        <Description>Affymetrix Probe Set ID</Description>
+      </Column>
+      <Column position="2">
+        <Name>miRNA_ID_LIST</Name>
+        <Description>miRNA name  </Description>
+        <Link-Prefix>http://microrna.sanger.ac.uk/cgi-bin/sequences/query.pl?terms=</Link-Prefix>
+        <Link-Delimiter> // </Link-Delimiter>
+      </Column>
+      <Column position="3">
+        <Name>SPOT_ID</Name>
+      </Column>
+      <Column position="4">
+        <Name>Species Scientific Name</Name>
+        <Description>The genus and species of the organism represented by the probe set.</Description>
+      </Column>
+      <Column position="5">
+        <Name>Annotation Date</Name>
+        <Description>The date that the annotations for this probe array were last updated. It will generally be earlier than the date when the annotations were posted on the Affymetrix web site.</Description>
+      </Column>
+      <Column position="6">
+        <Name>Sequence Type</Name>
+        <Description>Indicates whether the sequence is an Exemplar, Consensus or Control sequence. An Exemplar is a single nucleotide sequence taken directly from a public database. This sequence could be an mRNA or EST. A Consensus sequence, is a nucleotide sequence assembled by Affymetrix, based on one or more sequence taken from a public database.</Description>
+      </Column>
+      <Column position="7">
+        <Name>Sequence Source</Name>
+        <Description>The database from which the sequence used to design this probe set was taken.</Description>
+      </Column>
+      <Column position="8">
+        <Name>Transcript ID(Array Design)</Name>
+      </Column>
+      <Column position="9">
+        <Name>Alignments</Name>
+        <Description>Position of the alignment of the target sequence on the genome. Format: &quot;chromosome // start-end // strand // percentage identity&quot;</Description>
+      </Column>
+      <Column position="10">
+        <Name>Sequence Length</Name>
+      </Column>
+      <Column position="11">
+        <Name>SEQUENCE</Name>
+        <Description>target sequence</Description>
+      </Column>
+    <External-Data rows="7815">
+GPL8786-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Platform>
+
+  <Sample iid="GSM2329944">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID01_751</Title>
+    <Accession database="GEO">GSM2329944</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+33
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329944/suppl/GSM2329944_ID01_751_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID01_751)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329944-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329945">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID02_884</Title>
+    <Accession database="GEO">GSM2329945</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+38
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329945/suppl/GSM2329945_ID02_884_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID02_884)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329945-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329946">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID03_1141</Title>
+    <Accession database="GEO">GSM2329946</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+34
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329946/suppl/GSM2329946_ID03_1141_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID03_1141)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329946-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329947">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID04_791</Title>
+    <Accession database="GEO">GSM2329947</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+31
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329947/suppl/GSM2329947_ID04_791_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID04_791)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329947-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329948">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID05_4638</Title>
+    <Accession database="GEO">GSM2329948</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+30
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329948/suppl/GSM2329948_ID05_4638_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID05_4638)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329948-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329949">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID06_1732</Title>
+    <Accession database="GEO">GSM2329949</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+60
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329949/suppl/GSM2329949_ID06_1732_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID06_1732)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329949-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329950">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID07_4618</Title>
+    <Accession database="GEO">GSM2329950</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+28
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329950/suppl/GSM2329950_ID07_4618_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID07_4618)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329950-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329951">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID08_1034</Title>
+    <Accession database="GEO">GSM2329951</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+33
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329951/suppl/GSM2329951_ID08_1034_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID08_1034)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329951-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329952">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>lean control ID09_1796</Title>
+    <Accession database="GEO">GSM2329952</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+50
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329952/suppl/GSM2329952_ID09_1796_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID09_1796)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329952-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329953">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID10_2636</Title>
+    <Accession database="GEO">GSM2329953</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+38
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329953/suppl/GSM2329953_ID10_2636_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID10_2636)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329953-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329954">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID11_4589</Title>
+    <Accession database="GEO">GSM2329954</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+30
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329954/suppl/GSM2329954_ID11_4589_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID11_4589)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329954-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329955">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID12_2183</Title>
+    <Accession database="GEO">GSM2329955</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+31
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329955/suppl/GSM2329955_ID12_2183_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID12_2183)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329955-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329956">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID13_1529</Title>
+    <Accession database="GEO">GSM2329956</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+38
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329956/suppl/GSM2329956_ID13_1529_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID13_1529)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329956-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329957">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID14_3689</Title>
+    <Accession database="GEO">GSM2329957</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+22
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329957/suppl/GSM2329957_ID14_3689_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID14_3689)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329957-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329958">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID15_325</Title>
+    <Accession database="GEO">GSM2329958</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+24
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329958/suppl/GSM2329958_ID15_325_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID15_325)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329958-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329959">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID16_4624</Title>
+    <Accession database="GEO">GSM2329959</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+42
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329959/suppl/GSM2329959_ID16_4624_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID16_4624)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329959-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329960">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID17_3718</Title>
+    <Accession database="GEO">GSM2329960</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+26
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329960/suppl/GSM2329960_ID17_3718_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID17_3718)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329960-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329961">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID18_3713</Title>
+    <Accession database="GEO">GSM2329961</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+45
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329961/suppl/GSM2329961_ID18_3713_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID18_3713)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329961-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329962">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID19_4662</Title>
+    <Accession database="GEO">GSM2329962</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+53
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329962/suppl/GSM2329962_ID19_4662_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID19_4662)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329962-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329963">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID20_4281</Title>
+    <Accession database="GEO">GSM2329963</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+31
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329963/suppl/GSM2329963_ID20_4281_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID20_4281)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329963-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329964">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID21_2652</Title>
+    <Accession database="GEO">GSM2329964</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+43
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329964/suppl/GSM2329964_ID21_2652_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID21_2652)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329964-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329965">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID22_3699</Title>
+    <Accession database="GEO">GSM2329965</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+40
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329965/suppl/GSM2329965_ID22_3699_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID22_3699)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329965-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329966">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID23_4594</Title>
+    <Accession database="GEO">GSM2329966</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+43
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329966/suppl/GSM2329966_ID23_4594_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID23_4594)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329966-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329967">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID24_4270</Title>
+    <Accession database="GEO">GSM2329967</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+36
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329967/suppl/GSM2329967_ID24_4270_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID24_4270)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329967-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329968">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID25_2645</Title>
+    <Accession database="GEO">GSM2329968</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+40
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329968/suppl/GSM2329968_ID25_2645_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID25_2645)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329968-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329969">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID26_2663</Title>
+    <Accession database="GEO">GSM2329969</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+42
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329969/suppl/GSM2329969_ID26_2663_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID26_2663)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329969-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329970">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID27_2629</Title>
+    <Accession database="GEO">GSM2329970</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+42
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329970/suppl/GSM2329970_ID27_2629_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID27_2629)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329970-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329971">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID28_4973</Title>
+    <Accession database="GEO">GSM2329971</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+55
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329971/suppl/GSM2329971_ID28_4973_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID28_4973)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329971-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329972">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID29_4967</Title>
+    <Accession database="GEO">GSM2329972</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+50
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329972/suppl/GSM2329972_ID29_4967_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID29_4967)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329972-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329973">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID30_4982</Title>
+    <Accession database="GEO">GSM2329973</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+50
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329973/suppl/GSM2329973_ID30_4982_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID30_4982)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329973-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329974">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID31_4957</Title>
+    <Accession database="GEO">GSM2329974</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+34
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329974/suppl/GSM2329974_ID31_4957_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID31_4957)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329974-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329975">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID32_4921</Title>
+    <Accession database="GEO">GSM2329975</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+33
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329975/suppl/GSM2329975_ID32_4921_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID32_4921)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329975-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329976">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID33_2658</Title>
+    <Accession database="GEO">GSM2329976</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+34
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329976/suppl/GSM2329976_ID33_2658_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID33_2658)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329976-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329977">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID34_4965</Title>
+    <Accession database="GEO">GSM2329977</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+41
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329977/suppl/GSM2329977_ID34_4965_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID34_4965)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329977-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329978">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID35_4991</Title>
+    <Accession database="GEO">GSM2329978</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+38
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329978/suppl/GSM2329978_ID35_4991_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID35_4991)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329978-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329979">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID36_5171</Title>
+    <Accession database="GEO">GSM2329979</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+42
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329979/suppl/GSM2329979_ID36_5171_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID36_5171)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329979-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329980">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID37_4649</Title>
+    <Accession database="GEO">GSM2329980</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+29
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329980/suppl/GSM2329980_ID37_4649_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID37_4649)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329980-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329981">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID38_4640</Title>
+    <Accession database="GEO">GSM2329981</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+41
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329981/suppl/GSM2329981_ID38_4640_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID38_4640)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329981-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329982">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID39_4910</Title>
+    <Accession database="GEO">GSM2329982</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+50
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329982/suppl/GSM2329982_ID39_4910_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID39_4910)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329982-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329983">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID40_4810</Title>
+    <Accession database="GEO">GSM2329983</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+36
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329983/suppl/GSM2329983_ID40_4810_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID40_4810)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329983-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329984">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID41_4639</Title>
+    <Accession database="GEO">GSM2329984</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+41
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329984/suppl/GSM2329984_ID41_4639_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID41_4639)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329984-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329985">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID42_4275</Title>
+    <Accession database="GEO">GSM2329985</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+48
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329985/suppl/GSM2329985_ID42_4275_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID42_4275)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329985-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329986">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID43_1794</Title>
+    <Accession database="GEO">GSM2329986</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+38
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329986/suppl/GSM2329986_ID43_1794_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID43_1794)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329986-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329987">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID44_4642</Title>
+    <Accession database="GEO">GSM2329987</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+36
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329987/suppl/GSM2329987_ID44_4642_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID44_4642)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329987-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329988">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin resistant lipogenesis ID45_514</Title>
+    <Accession database="GEO">GSM2329988</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+25
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329988/suppl/GSM2329988_ID45_514_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID45_514)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329988-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329989">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID46_4603</Title>
+    <Accession database="GEO">GSM2329989</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+34
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329989/suppl/GSM2329989_ID46_4603_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID46_4603)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329989-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329990">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID47_328</Title>
+    <Accession database="GEO">GSM2329990</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+51
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329990/suppl/GSM2329990_ID47_328_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID47_328)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329990-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Sample iid="GSM2329991">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-05-01</Last-Update-Date>
+    </Status>
+    <Title>obese insulin sensitive lipogenesis ID48_2656</Title>
+    <Accession database="GEO">GSM2329991</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Subcutaneous abdominal WAT</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="tissue">
+WAT
+      </Characteristics>
+      <Characteristics tag="genotype">
+female
+      </Characteristics>
+      <Characteristics tag="age">
+31
+      </Characteristics>
+      <Treatment-Protocol>
+Patients came to the laboratory for clinical examination following an overnight fast. An abdominal subcutaneous fat biopsy was obtained by needle biopsy. Tissue pieces were rapidly rinsed in saline. A small part was immediately used for determination of mean fat cell volume and for ex vivo quantification of adipocyte lipogenesis. The rest was frozen in liquid nitrogen and kept at -70 °C for subsequenct RNA preparation.
+      </Treatment-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+Total RNA was extracted from adipose tissue specimens (300 mg) using the miRNeasy kit (Qiagen, Hilden, Germany)
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+One μg of total adipose RNA was labeled using the FlashTag biotin HSR labeling kit (Genisphere Inc., Hatfield, PA) according to the supplier’s protocol.
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+The labeled samples were placed in a hybridization cocktail mix containing 4 % formamide and hybridized overnight to Affymetrix GeneChip miRNA 1.0 arrays (Affymetrix Inc., Santa Clara, CA) following the indicated Genisphere protocol.
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+The arrays were washed, stained and scanned in an Affymetrix GCS 3000 scanner.
+    </Scan-Protocol>
+    <Data-Processing>
+Signal intensities and present calls were generated in the miRNA QC tool (by Affymetrix) using default settings, i.e. BC-CG background adjustment, quantile normalization, and median polish summarization.
+    </Data-Processing>
+    <Platform-Ref ref="GPL8786" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="CEL">
+ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2329nnn/GSM2329991/suppl/GSM2329991_ID48_2656_miRNA-1_0_2Xgain_.CEL.gz
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Signal intensity (log(2) transformed) and detection score according to miRNA QC tool</Description>
+      </Column>
+      <Column position="3">
+        <Name>DETECTION P-VALUE</Name>
+      </Column>
+      <Column position="4">
+        <Name>Detection (ID48_2656)</Name>
+      </Column>
+    <External-Data rows="7625">
+GSM2329991-tbl-1.txt
+    </External-Data>
+    </Data-Table>
+  </Sample>
+
+  <Series iid="GSE87379">
+    <Status database="GEO">
+      <Submission-Date>2016-09-27</Submission-Date>
+      <Release-Date>2017-05-01</Release-Date>
+      <Last-Update-Date>2017-07-31</Last-Update-Date>
+    </Status>
+    <Title>Comprehensive functional screening of miRNAs involved in human fat cell insulin sensitivity</Title>
+    <Accession database="GEO">GSE87379</Accession>
+    <Pubmed-ID>28270439</Pubmed-ID>
+    <Summary>
+The aim of this study was to detect and functionally investigate miRNAs linked to insulin sensitivity in human subcutaneous white adipose tissue (scWAT). Subjects were selected based on the insulin-stimulated lipogenesis response of subcutaneous adipocytes.
+Eleven miRNAs displayed differential expression between OIR and OIS states. Overexpression of miR-143-3p and miR-652-3p increased insulin-stimulated lipogenesis in human in vitro-differentiated adipocytes. MicroRNAs-143-3p and -652-3p are linked to scWAT insulin resistance independently of obesity.
+    </Summary>
+    <Overall-Design>
+Global miRNA profiling by array was performed in abdominal scWAT of obese insulin resistance (OIR), obese insulin sensitive (OIS) and lean women. Signicance analysis of microarrays (SAM) was use to compare the difference in gene expression between groups.MicroRNAs demonstrating differential expression between OIR and OIS women were overexpressed in human in vitro-differentiated adipocytes followed by assessment of lipogenesis and identification of miRNA targets by measuring mRNA/protein expression and 3’UTR analysis.
+    </Overall-Design>
+    <Type>Non-coding RNA profiling by array</Type>
+    <Contributor-Ref ref="contrib1" position="1" />
+    <Contact-Ref ref="contrib1" />
+    <Sample-Ref ref="GSM2329944" />
+    <Sample-Ref ref="GSM2329945" />
+    <Sample-Ref ref="GSM2329946" />
+    <Sample-Ref ref="GSM2329947" />
+    <Sample-Ref ref="GSM2329948" />
+    <Sample-Ref ref="GSM2329949" />
+    <Sample-Ref ref="GSM2329950" />
+    <Sample-Ref ref="GSM2329951" />
+    <Sample-Ref ref="GSM2329952" />
+    <Sample-Ref ref="GSM2329953" />
+    <Sample-Ref ref="GSM2329954" />
+    <Sample-Ref ref="GSM2329955" />
+    <Sample-Ref ref="GSM2329956" />
+    <Sample-Ref ref="GSM2329957" />
+    <Sample-Ref ref="GSM2329958" />
+    <Sample-Ref ref="GSM2329959" />
+    <Sample-Ref ref="GSM2329960" />
+    <Sample-Ref ref="GSM2329961" />
+    <Sample-Ref ref="GSM2329962" />
+    <Sample-Ref ref="GSM2329963" />
+    <Sample-Ref ref="GSM2329964" />
+    <Sample-Ref ref="GSM2329965" />
+    <Sample-Ref ref="GSM2329966" />
+    <Sample-Ref ref="GSM2329967" />
+    <Sample-Ref ref="GSM2329968" />
+    <Sample-Ref ref="GSM2329969" />
+    <Sample-Ref ref="GSM2329970" />
+    <Sample-Ref ref="GSM2329971" />
+    <Sample-Ref ref="GSM2329972" />
+    <Sample-Ref ref="GSM2329973" />
+    <Sample-Ref ref="GSM2329974" />
+    <Sample-Ref ref="GSM2329975" />
+    <Sample-Ref ref="GSM2329976" />
+    <Sample-Ref ref="GSM2329977" />
+    <Sample-Ref ref="GSM2329978" />
+    <Sample-Ref ref="GSM2329979" />
+    <Sample-Ref ref="GSM2329980" />
+    <Sample-Ref ref="GSM2329981" />
+    <Sample-Ref ref="GSM2329982" />
+    <Sample-Ref ref="GSM2329983" />
+    <Sample-Ref ref="GSM2329984" />
+    <Sample-Ref ref="GSM2329985" />
+    <Sample-Ref ref="GSM2329986" />
+    <Sample-Ref ref="GSM2329987" />
+    <Sample-Ref ref="GSM2329988" />
+    <Sample-Ref ref="GSM2329989" />
+    <Sample-Ref ref="GSM2329990" />
+    <Sample-Ref ref="GSM2329991" />
+    <Supplementary-Data type="TAR">
+ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE87nnn/GSE87379/suppl/GSE87379_RAW.tar
+    </Supplementary-Data>
+    <Relation type="BioProject" target="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA344564" />
+  </Series>
+
+</MINiML>
